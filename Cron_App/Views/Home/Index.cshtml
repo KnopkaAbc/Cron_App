@@ -1,0 +1,118 @@
+﻿@model ScheduleModel
+@{
+    ViewData["Title"] = "Schedule";    
+}
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Left part  -->
+            <div class="schedule-type">
+                <h2>Schedule</h2>
+                <label>
+                    <input type="radio" name="scheduleType" value="weekly" checked>
+                    Weekly
+                </label><br>
+                <label>
+                    <input type="radio" name="scheduleType" value="daily">
+                    Daily
+                </label><br>
+                <label>
+                    <input type="radio" name="scheduleType" value="monthly">
+                    Monthly
+                </label><br>
+                <label>
+                    <input type="radio" name="scheduleType" value="custom">
+                    Custom
+                </label>
+            </div>
+
+            <!-- Right part -->
+            <div class="options-section">
+                <!-- Weekly Options -->
+                <div class="schedule-option" id="weeklyOptions" style="display: block; width: auto">
+                    <select multiple size="7">
+                        <option value="MON">Monday</option>
+                        <option value="TUE">Tuesday</option>
+                        <option value="WED">Wednesday</option>
+                        <option value="THU">Thursday</option>
+                        <option value="FRI">Friday</option>
+                        <option value="SAT">Saturday</option>
+                        <option value="SUN">Sunday</option>
+                    </select>
+                    <div class="time-input">
+                        At <input type="time" value="12:00">
+                    </div>
+                </div>
+
+                <!-- Daily -->
+                <div class="schedule-option" id="dailyOptions">
+                    <div class="time-input">
+                        Each <input type="number" class="number-input" value="15"> Minutes
+                    </div>
+                </div>
+
+                <!-- Monthly -->
+                <div class="schedule-option" id="monthlyOptions">
+                    <div>
+                        Days: <input type="text"
+                                     placeholder="1,15,30"
+                                     pattern="\d+(,\d+)*"
+                                     title="Enter days separated by commas (1-31)">
+                    </div>
+                    <div class="time-input">
+                        At <input type="time" value="12:00">
+                    </div>
+                </div>
+
+                <!-- Custom Options -->
+                <div class="schedule-option" id="customOptions">
+                    <div class="day-selector">
+                        <label>Days:</label>
+                        <input type="text"
+                               class="day-input"
+                               placeholder="1,15,30"
+                               pattern="\d+(,\d+)*"
+                               title="Enter days separated by commas (1-31)">
+                        <div class="day-hint">Numbers from 1 to 31 separated by commas</div>
+                    </div>
+                    <select multiple size="12">
+                        <option value="JAN">January</option>
+                        <option value="FEB">February</option>
+                        <option value="MAR">March</option>
+                        <option value="APR">April</option>
+                        <option value="MAY">May</option>
+                        <option value="JUN">June</option>
+                        <option value="JUL">July</option>
+                        <option value="AUG">August</option>
+                        <option value="SEP">September</option>
+                        <option value="OCT">October</option>
+                        <option value="NOV">November</option>
+                        <option value="DEC">December</option>
+                    </select>
+                    <div class="time-input">
+                        At: <input type="time" value="12:00">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="controls">
+            <button id="loadBtn">Load</button>
+            <button>Save</button>
+        </div>
+    </div>
+
+    <div class="cron-input">
+        <label>CRON:</label>
+        <input type="text" placeholder="0 12 * * *" value="" style="width: 100%">
+    </div>
+
+   
+</body>
+</html>

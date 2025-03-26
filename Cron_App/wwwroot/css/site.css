@@ -1,0 +1,90 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 20px;
+    font-family: Arial;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+    flex: 1;
+}
+
+.schedule-type {
+    width: 200px;
+}
+
+.options-section {
+    flex: 1;
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+}
+
+.schedule-option {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    display: none;
+}
+
+#weeklyOptions select {
+    width: auto;
+    max-width: 220px;
+}
+
+.days-row {
+    display: flex;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.time-input {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.number-input {
+    width: 50px;
+}
+
+.controls {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+}
+
+select {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+}
