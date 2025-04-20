@@ -1,4 +1,17 @@
-﻿const monthAbbreviations = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+﻿
+// Это надо брать списком из системы как в DateService
+// Примерно так
+
+/*
+const formatter = new Intl.DateTimeFormat('ru-RU', { month: 'long' });
+const monthAbbreviations = Array.from({ length: 12 }, (_, i) =>
+    formatter.format(new Date(2020, i))
+);
+*/
+
+
+const monthAbbreviations = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
 
 document.querySelectorAll('input[name="scheduleType"]').forEach(radio => {
     radio.addEventListener('change', function () {
@@ -39,6 +52,7 @@ document.querySelector('button:last-child').addEventListener('click', () => {
     }
 });
 
+// Надо переименовать или удалить, не понятно какая функция используется, выше точно такая же
 function generateCron() {
     try {
         const type = document.querySelector('input[name="scheduleType"]:checked').value;

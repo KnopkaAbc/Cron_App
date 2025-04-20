@@ -1,7 +1,12 @@
+using Cron_App.Abstractions;
+using Cron_App.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IDateService, DateService>();
 
 var app = builder.Build();
 
