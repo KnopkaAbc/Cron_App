@@ -1,17 +1,7 @@
-﻿
-// Это надо брать списком из системы как в DateService
-// Примерно так
-
-/*
-const formatter = new Intl.DateTimeFormat('ru-RU', { month: 'long' });
+﻿const monthformatter = new Intl.DateTimeFormat('en-US', { month: 'short' });
 const monthAbbreviations = Array.from({ length: 12 }, (_, i) =>
-    formatter.format(new Date(2020, i))
+    monthformatter.format(new Date(2020, i)).toUpperCase()
 );
-*/
-
-
-const monthAbbreviations = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-
 
 document.querySelectorAll('input[name="scheduleType"]').forEach(radio => {
     radio.addEventListener('change', function () {
@@ -25,21 +15,6 @@ document.querySelectorAll('input[name="scheduleType"]').forEach(radio => {
     });
 });
 
-function generateCron() {
-    const type = document.querySelector('input[name="scheduleType"]:checked').value;
-    let cron = '';
-
-    if (type === 'custom') {
-        const days = document.querySelector('.day-input').value;
-        const months = document.querySelector('.day-input').value;
-        const time = document.querySelector('#customOptions input[type="time"]').value;
-        const [hours, minutes] = time.split(':');
-
-        cron = `0 ${minutes} ${hours} ${days} * *`;
-    }
-    return cron;
-}
-
 document.querySelector('button').addEventListener('click', () => {
     const cron = generateCron();
     document.querySelector('.cron-input input').value = cron;
@@ -52,7 +27,6 @@ document.querySelector('button:last-child').addEventListener('click', () => {
     }
 });
 
-// Надо переименовать или удалить, не понятно какая функция используется, выше точно такая же
 function generateCron() {
     try {
         const type = document.querySelector('input[name="scheduleType"]:checked').value;
@@ -90,6 +64,7 @@ function generateWeeklyCron() {
     if (selectedDays.length === 0) {
         throw new Error('Please select at least one day of the week');
     }
+
     const days = Array.from(selectedDays)
         .map(day => day.value)
         .sort()
@@ -195,7 +170,7 @@ function parseCron(cron) {
     let type = 'custom';
     let params = {};
     // Weekly
-    if (pattern.test(dayOfWeek)) {
+    if (pattern.test(dayOfWeek.toUpperCase())) {
         type = 'weekly';
         params = {
             days: dayOfWeek.split(','),

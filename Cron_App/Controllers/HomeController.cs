@@ -1,9 +1,9 @@
+using Cron_App.Abstractions;
 using Cron_App.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
 using System.Globalization;
-using Cron_App.Abstractions;
 
 namespace Cron_App.Controllers;
 
@@ -20,26 +20,27 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        var culture = new CultureInfo("en-EN");
         var model = new ScheduleModel
         {
             DayOfWeek = _dateService.GetDaysOfWeek().Select(x => new SelectListItem()
             {
-                Value = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedDayName((DayOfWeek)x.Key),
+                Value = culture.DateTimeFormat.GetAbbreviatedDayName((DayOfWeek)x.Key),
                 Text = x.Value
             }).ToList(),
             Months = _dateService.GetMonths().Select(x => new SelectListItem()
             {
-                Value = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(x.Key),
+                Value = culture.DateTimeFormat.GetAbbreviatedMonthName(x.Key),
                 Text = x.Value
             }).ToList(),
             SelectedDay = string.Empty,
             Date = new DateOnly(),
             Minutes = new TimeOnly()
         };
-        
+
         return View(model);
     }
-    
+
     [HttpPost]
     public ActionResult Schedule(ScheduleModel model)
     {

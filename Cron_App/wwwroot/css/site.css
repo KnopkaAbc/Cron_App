@@ -57,6 +57,11 @@ body {
     max-width: 220px;
 }
 
+.months select {
+    width: auto;
+    max-width: 220px;
+}
+
 .days-row {
     display: flex;
     gap: 5px;

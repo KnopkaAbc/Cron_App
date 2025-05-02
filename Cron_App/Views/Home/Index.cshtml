@@ -37,19 +37,7 @@
             <div class="options-section">
                 <!-- Weekly Options -->
                 <div class="schedule-option" id="weeklyOptions" style="display: block; width: auto">
-                    @Html.DropDownList("DayOfWeek", Model.DayOfWeek)
-
-                    @*
-                    <select multiple size="7">
-                        <option value="MON">Monday</option>
-                        <option value="TUE">Tuesday</option>
-                        <option value="WED">Wednesday</option>
-                        <option value="THU">Thursday</option>
-                        <option value="FRI">Friday</option>
-                        <option value="SAT">Saturday</option>
-                        <option value="SUN">Sunday</option>
-                    </select>
-                    *@
+                    @Html.DropDownList("DayOfWeek", Model.DayOfWeek)                   
                     <div class="time-input">
                         At <input type="time" value="12:00">
                     </div>
@@ -86,23 +74,9 @@
                                title="Enter days separated by commas (1-31)">
                         <div class="day-hint">Numbers from 1 to 31 separated by commas</div>
                     </div>
-                    @Html.DropDownList("Months", Model.Months)
-                    @*
-                    <select multiple size="12">
-                        <option value="JAN">January</option>
-                        <option value="FEB">February</option>
-                        <option value="MAR">March</option>
-                        <option value="APR">April</option>
-                        <option value="MAY">May</option>
-                        <option value="JUN">June</option>
-                        <option value="JUL">July</option>
-                        <option value="AUG">August</option>
-                        <option value="SEP">September</option>
-                        <option value="OCT">October</option>
-                        <option value="NOV">November</option>
-                        <option value="DEC">December</option>
-                    </select>
-                    *@
+                    <div class="months">
+                        @Html.DropDownList("Months", Model.Months)                    
+                    </div>
                     <div class="time-input">
                         At: <input type="time" value="12:00">
                     </div>
@@ -121,7 +95,6 @@
         <label>CRON:</label>
         <input type="text" placeholder="0 12 * * *" value="" style="width: 100%">
     </div>
-
    
 </body>
 </html>
